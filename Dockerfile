@@ -12,7 +12,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies.
-RUN npm install
+RUN npm install --only=production && npm install nodemon -g
 
 # Copy the rest of the source files into the image.
 COPY . .
@@ -21,4 +21,4 @@ COPY . .
 EXPOSE 8080
 
 # Run the application using nodemon.
-CMD ["npm", "run", "dev"]
+CMD ["nodemon", "index.ts"]
