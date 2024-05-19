@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import { Scenario ,Vehicle } from '../types/datatypes'
 
-const dataPath = path.join(__dirname,'../../data/data.json')
+const dataPath = path.join(__dirname,'../data/data.json')
 
 const readData = () : {scenarios : Scenario[], vehicles : Vehicle[]}=>{
     try {
@@ -33,12 +33,14 @@ export const getSenarios = (req: Request, res: Response) => {
 
 export const addSenario = (req: Request, res: Response) => {
     try {
+      console.log('invoked')
         const data = readData();
         const newScenario: Scenario = { id: Date.now(), ...req.body };
         data.scenarios.push(newScenario);
         writeData(data);
         res.json(newScenario);
       } catch (error) {
+        console.log(error)
         res.status(500).json({ message: 'Error adding scenario' });
       }
 }

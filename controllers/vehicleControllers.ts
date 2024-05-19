@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import { Scenario, Vehicle } from "../types/datatypes";
 
-const dataPath = path.join(__dirname, '../../data/data.json')
+const dataPath = path.join(__dirname,'../data/data.json')
 
 const readData = () : {scenarios : Scenario[], vehicles : Vehicle[]} =>{
     try {
