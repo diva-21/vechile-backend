@@ -11,14 +11,17 @@ WORKDIR /app
 # Copy package.json and package-lock.json to the working directory.
 COPY package*.json ./
 
-# Install dependencies.
-RUN npm install --only=production && npm install nodemon -g
+# Install all dependencies (both dependencies and devDependencies).
+RUN npm install
 
 # Copy the rest of the source files into the image.
 COPY . .
+
+# Build the TypeScript files.
+RUN npm run build
 
 # Expose the port that the application listens on.
 EXPOSE 8080
 
 # Run the application using nodemon.
-CMD ["nodemon", "index.ts"]
+CMD ["npm", "run", "dev"]
