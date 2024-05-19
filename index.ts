@@ -17,22 +17,22 @@ app.use(bodyParser.json());
 const API_URL = process.env.API_URL; 
 
 // CORS options
-const options: cors.CorsOptions = {
-  allowedHeaders: [
-    'Origin',
-    'X-Requested-With',
-    'Content-Type',
-    'Accept',
-    'X-Access-Token',
-  ],
-  credentials: true,
-  methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-  origin: "*",
-  preflightContinue: false,
-};
+// const options: cors.CorsOptions = {
+//   allowedHeaders: [
+//     'Origin',
+//     'X-Requested-With',
+//     'Content-Type',
+//     'Accept',
+//     'X-Access-Token',
+//   ],
+//   credentials: true,
+//   methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+//   origin: "*",
+//   preflightContinue: false,
+// };
 
 // Use CORS middleware
-app.use(cors(options));
+app.use(cors());
 
 app.use('/scenarios', scenarioRoutes);
 app.use('/vehicles', vehicleRoutes);
